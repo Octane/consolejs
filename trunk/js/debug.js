@@ -302,7 +302,8 @@ if (typeof console == "undefined") {
 	},
 
 	//evalPattern: "try{{%code%}}catch(e){$console.error(e.message)}",
-	evalPattern: "try{eval('{%code%}')}catch(e){$console.error(e.message)}",
+	//evalPattern: "try{eval('{%code%}')}catch(e){$console.error(e.message)}",
+	evalPattern: "try{$console.log(eval('{%code%}'))}catch(e){$console.error(e.message)}",
 
 	evalOn:   "submit",
 	toggleOn: "click",
