@@ -1,7 +1,8 @@
 ﻿/**
- * consolejs v1.0 
- * © 2011 Dmitry Korobkin
- * Released under the MIT License
+ * consolejs 1.0 
+ * © Dmitry Korobkin
+ * MIT License
+ * http://code.google.com/p/consolejs/
  */
 
 /**
@@ -300,7 +301,8 @@ if (typeof console == "undefined") {
 		hiddenClass:  "hidden"
 	},
 
-	evalPattern: "try{{%code%}}catch(e){$console.error(e.message)}",
+	//evalPattern: "try{{%code%}}catch(e){$console.error(e.message)}",
+	evalPattern: "try{eval('{%code%}')}catch(e){$console.error(e.message)}",
 
 	evalOn:   "submit",
 	toggleOn: "click",
