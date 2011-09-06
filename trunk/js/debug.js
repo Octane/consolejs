@@ -281,7 +281,7 @@ if (typeof console == "undefined") {
 
 /**
  * Командная строка
- * @require Function.prototype.bind, Array.prototype.forEach, Object.keys, $console.log, $console.error
+ * @require Function.prototype.bind, Array.prototype.forEach, Object.keys
  */
 ({
 

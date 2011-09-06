@@ -4,7 +4,6 @@
 //https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/keys
 if (!Object.keys) {
 	Object.keys = function () {
-		//в IE<9 переопределенные стандартные методы не становятся enumerable
 		var buggedKeys = [
 				"constructor", "toString", "toLocaleString", "valueOf",
 				"hasOwnProperty", "propertyIsEnumerable", "isPrototypeOf"
@@ -68,9 +67,6 @@ if (!Array.prototype.forEach) {
 
 //Bound Function
 //https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/bind
-//в этом варианте для [[TargetFunction]] выполняется [[Construct]],
-//корректно обрабатывается случай boundFunction.call(new boundFunction)
-//и игнорируется boundFunction.prototype
 if (!Function.prototype.bind) {
 	Function.prototype.bind = function () {
 
@@ -102,7 +98,6 @@ if (!Function.prototype.bind) {
 					allArgs = boundArgs.concat(Array.prototype.slice.call(arguments));
 					len = allArgs.length;
 				}
-				//в strict режиме this может быть undefined
 				if (this && this.constructor == boundFunc) {
 					boundFunc._protoMagic = true;
 					NOP.prototype = len > 1 ? newApply(targetFunc, allArgs) : (len ? new targetFunc(allArgs[0]) : new targetFunc);
