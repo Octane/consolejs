@@ -301,9 +301,7 @@ if (typeof console == "undefined") {
 		hiddenClass:  "hidden"
 	},
 
-	//evalPattern: "try{{%code%}}catch(e){$console.error(e.message)}",
-	//evalPattern: "try{eval('{%code%}')}catch(e){$console.error(e.message)}",
-	evalPattern: "try{$console.log(eval('{%code%}'))}catch(e){$console.error(e.message)}",
+	evalPattern: "try{$console.log(eval(unescape('{%code%}')))}catch(e){$console.error(e.message)}",
 
 	evalOn:   "submit",
 	toggleOn: "click",
@@ -354,7 +352,7 @@ if (typeof console == "undefined") {
 		if (code) {
 			$console.log("command line: " + code);
 			var script = document.createElement("script");
-			script.text = this.evalPattern.replace("{%code%}", code);
+			script.text = this.evalPattern.replace("{%code%}", escape(code));
 			document.body.appendChild(script);
 			document.body.removeChild(script);
 		}
