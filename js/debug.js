@@ -32,7 +32,7 @@ var $console = {
 	funcNamePattern: /^\s*function\s+(.+?)\s*\(/,
 	escapePattern: /["\n\r\t\s\u00A0]/g,
 	escapeChar: {
-		'"':  '\\"',
+		//'"':  '\\"',
 		"\n": "\\n",
 		"\r": "\\r",
 		"\t": "\\t",
@@ -119,7 +119,7 @@ var $console = {
 	},
 
 	_logString: function (str) {
-		return '"' + str.replace(this.escapePattern, this._escape) + '"';
+		return "`" + str.replace(this.escapePattern, this._escape) + "`";
 	},
 
 	_logFunction: function (func) {
